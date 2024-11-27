@@ -21,21 +21,43 @@ function github_repo_slider_admin_page() {
 
     // Handle form submission
     if (isset($_POST['github_repo_slider_submit'])) {
-        $repos = sanitize_text_field($_POST['github_repo_slider_repos']);
+        $repos = get_option('github_repo_slider_repos', []);
+        $new_repo = [
+            'title'       => sanitize_text_field($_POST['repo_title']),
+            'description' => sanitize_textarea_field($_POST['repo_description']),
+            'url'         => esc_url($_POST['repo_url']),
+        ];
+        $repos[] = $new_repo;
         update_option('github_repo_slider_repos', $repos);
     }
 
     // Get saved repositories
-    $repos = get_option('github_repo_slider_repos', '');
+    $repos = get_option('github_repo_slider_repos', []);
     ?>
     <div class="github-repo-slider-admin">
         <h1>GitHub Repo Slider</h1>
         <form method="post" action="">
-            <label for="github_repo_slider_repos">Enter GitHub Repositories (JSON Format)</label>
-            <textarea id="github_repo_slider_repos" name="github_repo_slider_repos" rows="10"><?php echo esc_textarea($repos); ?></textarea>
-            <p>Example: [{"title": "Repo 1", "description": "Description 1", "url": "https://github.com/repo1"}, {"title": "Repo 2", "description": "Description 2", "url": "https://github.com/repo2"}]</p>
-            <button type="submit" name="github_repo_slider_submit" class="button-primary">Save Repositories</button>
+            <label for="repo_title">Repository Title</label>
+            <input type="text" id="repo_title" name="repo_title" required />
+
+            <label for="repo_description">Description</label>
+            <textarea id="repo_description" name="repo_description" rows="3" required></textarea>
+
+            <label for="repo_url">GitHub URL</label>
+            <input type="url" id="repo_url" name="repo_url" required />
+
+            <button type="submit" name="github_repo_slider_submit" class="button-primary">Add Repository</button>
         </form>
+
+        <h2>Existing Repositories</h2>
+        <ul>
+            <?php foreach ($repos as $repo): ?>
+                <li>
+                    <strong><?php echo esc_html($repo['title']); ?></strong>: <?php echo esc_html($repo['description']); ?>
+                    (<a href="<?php echo esc_url($repo['url']); ?>" target="_blank">View</a>)
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </div>
     <?php
 }

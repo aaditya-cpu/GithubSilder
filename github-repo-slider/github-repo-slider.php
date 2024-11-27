@@ -8,7 +8,8 @@
  * Plugin URI: https://Goenka.xyz
  */
 
-if (!defined('ABSPATH')) {
+
+ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
@@ -23,16 +24,20 @@ include_once GITHUB_REPO_SLIDER_PATH . 'admin/admin-page.php';
 function github_repo_slider_enqueue_assets() {
     wp_enqueue_style('github-repo-slider-css', GITHUB_REPO_SLIDER_URL . 'public/slider.css');
     wp_enqueue_script('github-repo-slider-js', GITHUB_REPO_SLIDER_URL . 'public/slider.js', array('jquery'), null, true);
+
+    // Include modal styling and JS
+    wp_enqueue_style('github-repo-modal-css', GITHUB_REPO_SLIDER_URL . 'public/modal.css');
+    wp_enqueue_script('github-repo-modal-js', GITHUB_REPO_SLIDER_URL . 'public/modal.js', array('jquery'), null, true);
 }
 add_action('wp_enqueue_scripts', 'github_repo_slider_enqueue_assets');
 
-// Enqueue admin styles
+// Enqueue admin styles and scripts
 function github_repo_slider_enqueue_admin_assets() {
     wp_enqueue_style('github-repo-slider-admin-css', GITHUB_REPO_SLIDER_URL . 'admin/admin.css');
 }
 add_action('admin_enqueue_scripts', 'github_repo_slider_enqueue_admin_assets');
 
-// Register shortcode
+// Register slider shortcode
 function github_repo_slider_shortcode() {
     ob_start();
     include GITHUB_REPO_SLIDER_PATH . 'public/templates/slider-template.php';
@@ -40,8 +45,11 @@ function github_repo_slider_shortcode() {
 }
 add_shortcode('github_repo_slider', 'github_repo_slider_shortcode');
 
-// Add plugin footer credit in the admin panel
-function github_repo_slider_footer_credit() {
-    echo '<p style="text-align:center; margin-top:20px; font-size:0.9em;">GitHub Repo Slider Plugin by <a href="https://Goenka.xyz" target="_blank">Goenka.xyz</a></p>';
+// Register modal shortcode
+function github_repo_slider_modal_shortcode() {
+    ob_start();
+    include GITHUB_REPO_SLIDER_PATH . 'public/templates/modal-template.php';
+    return ob_get_clean();
 }
-add_action('admin_footer', 'github_repo_slider_footer_credit');
+add_shortcode('github_repo_modal', 'github_repo_slider_modal_shortcode');
+
