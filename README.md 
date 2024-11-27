@@ -1,0 +1,110 @@
+# GitHub Repo Slider Plugin
+
+The **GitHub Repo Slider Plugin** is a WordPress plugin designed to beautifully showcase GitHub repositories in a responsive, auto-scrolling slider. This plugin is perfect for developers who want to display their projects in a vibrant and interactive format on their WordPress site.
+
+---
+
+## **Features**
+- **Claymorphic Design**: A modern design aesthetic with vibrant colors and shadows.
+- **Responsive Slider**: Works seamlessly across all devices (desktop, tablet, mobile).
+- **Customizable Repositories**: Add your repositories through a simple admin interface.
+- **Neon Tiles**: Displays each repository with a glowing, claymorphic-styled tile.
+- **Auto-Scrolling**: The slider automatically scrolls but also supports touch and drag interactions.
+- **Direct Links to GitHub**: Each tile includes a button linking directly to the GitHub repository.
+- **Pause on Hover**: Slider pauses scrolling when hovered over.
+- **Admin Panel Integration**: Add and manage repositories in JSON format via the WordPress admin dashboard.
+
+---
+
+## **Installation**
+1. Download the plugin files and place them in the `wp-content/plugins/github-repo-slider` directory.
+2. Activate the plugin from your WordPress Admin Dashboard under the **Plugins** section.
+3. Go to **GitHub Repo Slider** in the WordPress admin menu to configure your repositories.
+
+---
+
+## **Usage**
+1. Add your GitHub repositories via the admin panel:
+   - Navigate to **GitHub Repo Slider** in the WordPress admin menu.
+   - Enter your repositories in JSON format. Example:
+     ```json
+     [
+       {
+         "title": "Awesome Project",
+         "description": "A project that solves world problems.",
+         "url": "https://github.com/yourusername/awesome-project"
+       },
+       {
+         "title": "Portfolio Website",
+         "description": "Personal portfolio showcasing my skills.",
+         "url": "https://github.com/yourusername/portfolio"
+       }
+     ]
+     ```
+2. Add the shortcode `[github_repo_slider]` to any WordPress page or post where you want the slider to appear.
+
+---
+
+## **Screenshots**
+
+### Admin Panel
+The admin panel allows you to manage repositories easily with a simple JSON format.
+
+![Admin Panel](https://via.placeholder.com/800x400)
+
+### Front-End Slider
+The slider showcases your repositories with glowing tiles.
+
+![Slider](https://via.placeholder.com/800x400)
+
+---
+
+## **Customization**
+
+### Color Theme
+The plugin uses the **Blood-of-Sun** color theme:
+- Primary Background: `#540B0E`
+- Highlight: `#A62E38`
+- Accent: `#335C67`
+- Light Shade: `#FFF3B0`
+- Call-to-Action: `#E09F3E`
+
+To modify these colors, you can edit the `public/slider.css` and `admin/admin.css` files.
+
+---
+
+## **Key Functionalities**
+1. **Auto-Scrolling Slider**:
+   - Automatically scrolls through repositories with smooth animations.
+   - Pauses scrolling when the user hovers over the slider.
+
+2. **Touch and Drag Support**:
+   - Fully responsive with touch and drag support for mobile and tablet devices.
+
+3. **Error Handling**:
+   - Displays a message if no repositories are configured.
+   - Prevents invalid JSON inputs in the admin panel.
+
+---
+
+## **Requirements**
+- WordPress 5.0 or higher
+- PHP 7.4 or higher
+- MySQL 5.7 or higher
+
+---
+
+## **Contributing**
+If you'd like to contribute or suggest improvements, please feel free to open an issue or submit a pull request on the plugin repository.
+
+---
+
+## **Credits**
+This plugin is developed and maintained by [Your Name](https://Goenka.xyz).
+
+---
+
+## **License**
+This plugin is licensed under the MIT License. You are free to use, modify, and distribute it.
+
+---
