@@ -3,7 +3,7 @@
  * Plugin Name: GitHub Repo Slider
  * Description: A plugin to display GitHub repositories in a responsive, claymorphic slider.
  * Version: 1.1
- * Author: Your Name
+ * Author: Aaditya Goenka
  * Author URI: https://Goenka.xyz
  * Plugin URI: https://Goenka.xyz
  */
